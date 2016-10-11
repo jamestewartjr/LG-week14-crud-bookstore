@@ -15,11 +15,13 @@ Users can:
 - [ ] Add books into the system via a page
 - [ ] Edit the details of a book
 - [ ] Delete a book from the system
-- [ ] See a book's details with title, authors, genres, description, and cover image
-- [ ] Add, edit, and see books related to an author
+- [ ] See a book's details with title, author, genre, description, and cover image
+- [ ] Add an author
+- [ ] Edit an author books
+- [ ] See books related to an author 
 - [ ] Signup for an account
 - [ ] Login & logout of an account
-- [ ] See the listing of available books.
+- [ ] See the listing of available books
 - [ ] Find a licensed project, preferably with the [MIT license][mit-license].
 
 ## Quality Rubric
