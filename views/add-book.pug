@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  div
+    h5.h5 Add a Book
+
+  div.row
+    form.add-book( action="/book/add", method="post" )
+      div.row
+        input( name="title", placeholder="Title" )
+        input( name="author", placeholder="Author" )
+        input( name="genre", placeholder="Genre")
+        input( name="img-url", placeholder="Image URL" )
+      div.row
+        div.col-md-1.col-md-offset-6
+          input.btn.btn-primary( type="submit", value="Submit" )

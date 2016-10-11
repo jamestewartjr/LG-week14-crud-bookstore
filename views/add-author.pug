@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  div.row
+    form( action="/author/add" method="post" )
+      div.row
+        div.col-md-2
+          input( name="name", placeholder="Author's Name" )
+        div.col-md-3
+          input( name="img_url", placeholder="Image URL" )
+      br
+      div.row
+        div.col-md-4
+          textarea.form-control( name="bio", placeholder="Information about the Author" rows="3" )
+      div.row
+        div.col-md-2.col-md-offset-4
+          input.btn.btn-primary( type="submit", value="Submit" )

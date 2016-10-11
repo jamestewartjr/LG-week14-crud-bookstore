@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  div
+    h4.h4 Update Book
+
+  div.row
+    form.update-book( action="/book/update", method="post" )
+      div.row
+        div.col-xs-2
+          input( name="title", placeholder="Title" )
+        div.col-xs-2
+          input( name="author", placeholder="Author" )
+      br
+      div.row
+        div.col-xs-2
+          input( name="genre", placeholder="Genre")
+        div.col-xs-2
+          input( name="img-url", placeholder="Image URL" )
+      br
+      div.row
+        div.col-md-1.col-md-offset-3
+          input.btn.btn-primary( type="submit", value="Submit" )
