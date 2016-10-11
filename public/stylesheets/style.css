@@ -5,4 +5,61 @@ a {
 body {
   padding: 10px;
   margin: 10px;
+  background-image: url("https://images2.alphacoders.com/261/26102.jpg");
 }
+
+.row {
+  position: relative;
+  display: flex;
+  margin: 5px;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  background-color: rgba(101, 0, 0, 0.82);
+}
+
+.user-login-input {
+  margin-right: 2em;
+}
+
+.page-container {
+  background-color: rgba(230, 230, 230, 0.70);
+  border-style: outset;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.admin-buttons {
+  flex-direction: row-reverse;
+  width: 50%;
+}
+
+.admin-btn {
+  margin-right: 1em;
+}
+
+.search-row {
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.add-author-form {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-col-1 {
+  width: 30%;
+}
+/*
+* {
+  position: relative !important;
+  border: solid black 1px;
+}
+*/

@@ -6,27 +6,31 @@ html
     link( rel="stylesheet", href="/stylesheets/style.css" )
 
   body
-    div.container-fluid
+    div.header-container
       div.row
-        div.col-md-6.col-md-offset-10
-          div.user-login
-            h4.h4 User Stuff
         div.col-md-6
           a( href="/" )
             h1.h1.app-title Simple Book Store
-    div.row
-      div.col-xl-3
-        br
+        div.col-xs-6
+          div.col-xs-6.col-md-offset-7
+            a( href='/user/create' )
+                h4.h4 Create Account
+            form
+              input.user-login-input( name="username", placeholder="Username" )
+              input.user-login-input( name="user-password", placeholder="Password", type="password" )
+              input.btn.btn-default( type="submit", value="Login" )
+  div.row
+    div.admin-buttons
+      a.btn.btn-default.admin-btn( href="/book/add" ) Add Book
+      a.btn.btn-default.admn-btn( href="/author/add" ) Add Author
 
+    div.row.search-row
+      form.search( action="#", method="#" )
+        input( name="search-query", placeholder="Search Books Here", type="text", size="75" )
+        input( type="submit" value="Submit")
 
-    div.row
-      div.col-md-6.col-md-offset-9
-        a.btn.btn-default( href="/book/add" ) Add Book
-        a.btn.btn-default( href="/author/add" ) Add Author
-      div.col-md-6.col-md-offset-10
-        form.search( action="#", method="#" )
-          input( name="search-query", placeholder="Search Books Here", type="text" )
-          input( type="submit" value="Submit")
+  div.page-container
+
 
 
     block content
