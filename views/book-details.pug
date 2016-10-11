@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+  div.row
+    div.col-md-6
+      img( src="http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png" )
+    div.row
+      div.col-md-6
+        h2.h2 Book Title Here
+      div.col-md-6
+        a( href="/author_details" )
+          h4.h4 Book Author
+      div.col-md-6
+        p book summary
+      div.col-md-1
+        a.btn.btn-primary( href="/book/update" ) Update
+      div.col-xs-1
+      div.col-md-1
+        a.btn.btn-danger( href="/" ) Delete

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  div.row
+    div.col-md-5
+      img( src="https://i.ytimg.com/vi/RHnsDSh8-8w/hqdefault.jpg" )
+    div.row
+      div.col-md-6
+        h2.h2 Author's name
+      div.col-md-6
+        strong Bio and stuff bout the author.
+
+        div.row
+          a.btn.btn-default( href="/author/update" ) Update Author
+
+  div.container-fluid
+    div.row
+      h5 Three books by author
+    div.row
+    - for ( let i = 3; i > 0; i-- ) {
+      div.col-md-3
+        a( href="/book_details" )
+          img( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9JKurHW69MeQsEB3ErEZkLHzWbnub-Ulwru-VzcXZGpaytPrQlw" )
+    - }

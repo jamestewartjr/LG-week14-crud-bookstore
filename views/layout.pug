@@ -1,7 +1,36 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title "Simple Book Store"
+    link( rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous" )
+    link( rel="stylesheet", href="/stylesheets/style.css" )
+
   body
+    div.header-container
+      div.row
+        div.col-md-6
+          a( href="/" )
+            h1.h1.app-title Simple Book Store
+        div.col-xs-6
+          div.col-xs-6.col-md-offset-7
+            a( href='/user/create' )
+                h4.h4 Create Account
+            form
+              input.user-login-input( name="username", placeholder="Username" )
+              input.user-login-input( name="user-password", placeholder="Password", type="password" )
+              input.btn.btn-default( type="submit", value="Login" )
+  div.row
+    div.admin-buttons
+      a.btn.btn-default.admin-btn( href="/book/add" ) Add Book
+      a.btn.btn-default.admn-btn( href="/author/add" ) Add Author
+
+    div.row.search-row
+      form.search( action="#", method="#" )
+        input( name="search-query", placeholder="Search Books Here", type="text", size="75" )
+        input( type="submit" value="Submit")
+
+  div.page-container
+
+
+
     block content
