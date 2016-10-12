@@ -2,6 +2,8 @@
 
 Create a simple content management system that allows users to add, delete, or update books.  Books entered in the system can be viewed in a listing, or searched for using basic searches (title, author, genre).
 
+Please read the INSTRUCTIONS file for help on starting up.
+
 ## Context
 
 Creating this web application will provide exposure to:
@@ -18,7 +20,7 @@ Users can:
 - [ ] See a book's details with title, author, genre, description, and cover image
 - [ ] Add an author
 - [ ] Edit an author books
-- [ ] See books related to an author 
+- [ ] See books related to an author
 - [ ] Signup for an account
 - [ ] Login & logout of an account
 - [ ] See the listing of available books
