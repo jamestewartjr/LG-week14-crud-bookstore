@@ -10,7 +10,7 @@ html
       div.row
         div.col-md-6
           a( href="/" )
-            h1.h1.app-title Simple Book Store
+            h1.h1.app-title.white-words Simple Book Store
         div.col-xs-6
           div.col-xs-6.col-md-offset-7
             a( href='/users/signup' )
@@ -26,8 +26,8 @@ html
 
     div.row.search-row
       form.search( action="#", method="#" )
-        input( name="search-query", placeholder="Search Books Here", type="text", size="75" )
-        input( type="submit" value="Submit")
+        input.form-control( name="search-query", placeholder="Search Books Here", type="text", size="75" )
+        input.form-group.col-md-offset-10( type="submit" value="Submit")
 
   div.page-container
 

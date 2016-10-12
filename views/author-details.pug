@@ -5,19 +5,18 @@ block content
   div.row
     div.col-md-5
       img.img-responsive( src="https://i.ytimg.com/vi/RHnsDSh8-8w/hqdefault.jpg" )
-      img( src="https://i.ytimg.com/vi/RHnsDSh8-8w/hqdefault.jpg" )
     div.col-md-5
       div.row
         div.col-md-7
-          h2.h2 Author's name
+          h2.h2.white-words O.D.B.
       div.row
         div.col-md-12
-          strong Bio and stuff bout the author.
+          strong.white-words Bio and stuff bout the author.
 
 
   div.row
     div.col-md-4
-      h5 Some books by author
+      h5.white-words Some books by author
     div.col-md-2.col-md-offset-8
       a.btn.btn-default( href="/authors/edit" ) Update Author
   div.row
@@ -27,12 +26,3 @@ block content
           a( href="/books/details" )
             img.img-responsive( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9JKurHW69MeQsEB3ErEZkLHzWbnub-Ulwru-VzcXZGpaytPrQlw" )
       - }
-      h5 Three books by author
-    div.col-md-2.col-md-offset-8
-      a.btn.btn-default( href="/authors/edit" ) Update Author
-  div.row.author-books
-    - for ( let i = 3; i > 0; i-- ) {
-      div.col-md-3
-        a( href="/books/details" )
-          img( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9JKurHW69MeQsEB3ErEZkLHzWbnub-Ulwru-VzcXZGpaytPrQlw" )
-    - }
