@@ -18,11 +18,7 @@ body {
 
 .header-container {
   display: flex;
-<<<<<<< Updated upstream
-  background-color: rgba(102, 0, 0, 0.82);
-=======
-  background-color: rgba(101, 0, 0, 0.82);
->>>>>>> Stashed changes
+  background-color: rgba( 19, 38, 57, 0.82 );
   border-style: outset;
   border-color: black;
 }
@@ -36,7 +32,7 @@ body {
 }
 
 .page-container {
-  background-color: rgba(230, 230, 230, 0.70);
+  background-color: rgba( 19, 38, 57, 0.82 );
   border-style: outset;
   display: flex;
   flex-direction: column;
@@ -44,7 +40,13 @@ body {
   margin-top: 5em;
   margin-left: auto;
   margin-right: auto;
+  padding: 1em;
 }
+
+.white-words {
+  color: white;
+}
+
 .admin-buttons {
   flex-direction: row-reverse;
   width: 50%;
@@ -55,14 +57,10 @@ body {
 }
 
 .author-books {
-<<<<<<< Updated upstream
   margin: 1em;
   padding: 1em;
   margin-left: auto;
   margin-right: auto;
-=======
-  margin: 2em;
->>>>>>> Stashed changes
 }
 
 .search-row {
@@ -70,11 +68,7 @@ body {
   width: 100%;
 }
 
-<<<<<<< Updated upstream
 .bookstore-form {
-=======
-.add-entry-form {
->>>>>>> Stashed changes
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -84,14 +78,7 @@ body {
   width: 30%;
 }
 
-<<<<<<< Updated upstream
 /** {
   position: relative !important;
   border: solid black 1px;
 }*/
-=======
-* {
-  position: relative !important;
-  border: solid black 1px;
-}
->>>>>>> Stashed changes
