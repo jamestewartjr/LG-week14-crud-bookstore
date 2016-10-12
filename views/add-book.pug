@@ -2,16 +2,37 @@ extends layout
 
 block content
 
-  div
-    h5.h5 Add a Book
+  div.row
+    div.col-sm-2
+      h5.h5 Add a Book
 
   div.row
-    form.add-book( action="/book/add", method="post" )
+<<<<<<< Updated upstream
+    form.bookstore-form( action="/book/add", method="post" )
       div.row
-        input( name="title", placeholder="Title" )
-        input( name="author", placeholder="Author" )
-        input( name="genre", placeholder="Genre")
-        input( name="img-url", placeholder="Image URL" )
+        div.col-md-7
+          input( name="title", placeholder="Title", size="50" )
+        div.col-md-7
+          input( name="author", placeholder="Author", size="50" )
+      br
       div.row
-        div.col-md-1.col-md-offset-6
+        div.col-md-7
+          input( name="genre", placeholder="Genre", size="50" )
+        div.col-md-7
+=======
+    form.add-entry-form( action="/book/add", method="post" )
+      div.row
+        div.col-md-5
+          input( name="title", placeholder="Title", size="50" )
+        div.col-md-5
+          input( name="author", placeholder="Author", size="50" )
+      br
+      div.row
+        div.col-md-5
+          input( name="genre", placeholder="Genre", size="50" )
+        div.col-md-5
+>>>>>>> Stashed changes
+          input( name="img-url", placeholder="Image URL", size="50" )
+      div.row
+        div.col-xs-2.col-md-offset-8
           input.btn.btn-primary( type="submit", value="Submit" )

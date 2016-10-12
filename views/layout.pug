@@ -15,7 +15,7 @@ html
           div.col-xs-6.col-md-offset-7
             a( href='/user/create' )
                 h4.h4 Create Account
-            form
+            form( action="/user/login", method="post" )
               input.user-login-input( name="username", placeholder="Username" )
               input.user-login-input( name="user-password", placeholder="Password", type="password" )
               input.btn.btn-default( type="submit", value="Login" )

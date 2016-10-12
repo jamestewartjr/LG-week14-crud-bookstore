@@ -6,7 +6,7 @@ block content
     h4.h4 Update Book
 
   div.row
-    form.add-book( action="/author/update", method="post" )
+    form.bookstore-form( action="/author/update", method="post" )
       div.row
         div.col-md-2
           input( name="name", placeholder="Name" )
@@ -17,5 +17,5 @@ block content
           div.col-md-4
             textarea.form-control( name="bio", placeholder="Author's Bio...", rows="3" )
       div.row
-        div.col-md-1.col-md-offset-4
+        div.col-md-2.col-md-offset-4
           input.btn.btn-primary( type="submit", value="Submit" )

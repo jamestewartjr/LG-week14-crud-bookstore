@@ -3,7 +3,7 @@ extends layout
 block content
 
   div.row
-    form.add-author-form( action="/author/add" method="post" )
+    form.add-entry-form( action="/author/add" method="post" )
       div.row
         div.col-md-4
           input( name="name", placeholder="Author's Name", size="30" )
@@ -14,5 +14,5 @@ block content
         div.col-md-8
           textarea.form-control( name="bio", placeholder="Information about the Author", rows="3", size="100" )
       div.row
-        div.col-md-1.col-md-offset-7
+        div.col-md-2.col-md-offset-7
           input.btn.btn-primary( type="submit", value="Submit" )
