@@ -13,7 +13,7 @@ html
             h1.h1.app-title Simple Book Store
         div.col-xs-6
           div.col-xs-6.col-md-offset-7
-            a( href='/user/create' )
+            a( href='/users/create' )
                 h4.h4 Create Account
             form( action="/user/login", method="post" )
               input.user-login-input( name="username", placeholder="Username" )
@@ -21,8 +21,8 @@ html
               input.btn.btn-default( type="submit", value="Login" )
   div.row
     div.admin-buttons
-      a.btn.btn-default.admin-btn( href="/book/add" ) Add Book
-      a.btn.btn-default.admn-btn( href="/author/add" ) Add Author
+      a.btn.btn-default.admin-btn( href="/books/add" ) Add Book
+      a.btn.btn-default.admn-btn( href="/authors/add" ) Add Author
 
     div.row.search-row
       form.search( action="#", method="#" )

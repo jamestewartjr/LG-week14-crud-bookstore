@@ -7,7 +7,7 @@ block content
       h5.h5 Add a Book
 
   div.row
-    form.bookstore-form( action="/book/add", method="post" )
+    form.bookstore-form( action="/books/add", method="post" )
       div.row
         div.col-md-7
           input( name="title", placeholder="Title", size="50" )
@@ -25,11 +25,3 @@ block content
         div.col-md-5
           input( name="author", placeholder="Author", size="50" )
       br
-      div.row
-        div.col-md-5
-          input( name="genre", placeholder="Genre", size="50" )
-        div.col-md-5
-          input( name="img-url", placeholder="Image URL", size="50" )
-      div.row
-        div.col-xs-2.col-md-offset-8
-          input.btn.btn-primary( type="submit", value="Submit" )
