@@ -15,27 +15,21 @@ block content
           strong Bio and stuff bout the author.
 
 
-<<<<<<< HEAD
-=======
-        div.row
-          a.btn.btn-default( href="/authors/update" ) Update Author
->>>>>>> master
-
   div.row
     div.col-md-4
       h5 Some books by author
     div.col-md-2.col-md-offset-8
-      a.btn.btn-default( href="/author/update" ) Update Author
+      a.btn.btn-default( href="/authors/edit" ) Update Author
   div.row
     div.author-books
       - for ( let i = 4; i > 0; i-- ) {
         div.col-md-3
-          a( href="/book_details" )
+          a( href="/books/details" )
             img.img-responsive( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9JKurHW69MeQsEB3ErEZkLHzWbnub-Ulwru-VzcXZGpaytPrQlw" )
       - }
       h5 Three books by author
     div.col-md-2.col-md-offset-8
-      a.btn.btn-default( href="/author/update" ) Update Author
+      a.btn.btn-default( href="/authors/edit" ) Update Author
   div.row.author-books
     - for ( let i = 3; i > 0; i-- ) {
       div.col-md-3
