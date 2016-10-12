@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 router.get('/signup', (request, response) => {
-  response.send( 'get the signup form')
+  response.render( 'create-user' )
 })
 
 router.post('/signup', (request, response) => {
