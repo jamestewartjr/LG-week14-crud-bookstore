@@ -6,19 +6,19 @@ block content
     h4.h4 Update Book
 
   div.row
-    form.update-book( action="/books/edit", method="post" )
+    form.bookstore-form( action="/books/edit", method="post" )
       div.row
-        div.col-xs-2
-          input( name="title", placeholder="Title" )
-        div.col-xs-2
-          input( name="author", placeholder="Author" )
+        div.col-md-7
+          input( name="title", placeholder="Title", size="50" )
+        div.col-md-7
+          input( name="author", placeholder="Author", size="50"  )
       br
       div.row
-        div.col-xs-2
-          input( name="genre", placeholder="Genre")
-        div.col-xs-2
-          input( name="img-url", placeholder="Image URL" )
+        div.col-md-7
+          input( name="genre", placeholder="Genre", size="50" )
+        div.col-md-7
+          input( name="img-url", placeholder="Image URL", size="50" )
       br
       div.row
-        div.col-md-1.col-md-offset-3
+        div.col-xs-2.col-md-offset-8
           input.btn.btn-primary( type="submit", value="Submit" )

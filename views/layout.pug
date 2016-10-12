@@ -13,9 +13,9 @@ html
             h1.h1.app-title Simple Book Store
         div.col-xs-6
           div.col-xs-6.col-md-offset-7
-            a( href='/users/create' )
+            a( href='/users/signup' )
                 h4.h4 Create Account
-            form
+            form( action="/users/login", method="post" )
               input.user-login-input( name="username", placeholder="Username" )
               input.user-login-input( name="user-password", placeholder="Password", type="password" )
               input.btn.btn-default( type="submit", value="Login" )

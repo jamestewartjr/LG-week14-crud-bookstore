@@ -1,14 +1,12 @@
 extends layout
 
 block content
-  div.container-fluid
+  div.row
 
     - for ( let i = 5; i > 0; i-- ) {
       div.col-md-2
         div.book-title
-          ul
-            li
-              a( href="/book_details" )
-                h4.h4
-                  img( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpiVt473u4v8aAF_Xxb5mEYvTRV2wL_6AZVSR7uxmE6wFGYtVC" )
+          a( href="/books/details" )
+            h4.h4
+              img.img-responsive( src="http://www.clipartden.com/_thumbspd/education/school/school_book_small_tan.png" )
           - }
