@@ -79,6 +79,12 @@ body {
   width: 30%;
 }
 
+.input-error {
+  color: red;
+  font-weight: bold;
+  font-style: italic;
+}
+
 /** {
   position: relative !important;
   border: solid black 1px;

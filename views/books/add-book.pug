@@ -1,6 +1,11 @@
-extends layout
+extends ../layout
 
 block content
+
+  if error == true
+    div.col-md-6.col-md-offset-5
+      p.input-error All fields are required.
+
 
   div.row
     div.col-sm-2
@@ -17,6 +22,9 @@ block content
       div.row.form-group
         div.col-md-7
           input( name="genre", placeholder="Genre", size="50" )
+      div.row.form-group
+        div.col-md-7
+          input( name="img_url", placeholder="Image URL", size="50" )
       div.row.form-group
         div.col-md-2.col-md-offset-6
           input.btn.btn-primary( type="submit", value="Submit" )
