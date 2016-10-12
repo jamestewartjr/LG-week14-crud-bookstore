@@ -4,7 +4,7 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   email VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  name VARCHAR(255) NULL,
+  name VARCHAR(255) NULL
 );
 
 DROP TABLE IF EXISTS books;
@@ -14,7 +14,7 @@ CREATE TABLE books(
   title VARCHAR(50) NOT NULL,
   genre vARCHAR(50) NULL,
   cover VARCHAR(255) NULL,
-  description text NULL,
+  description text NULL
 );
 
 DROP TABLE IF EXISTS authors;
