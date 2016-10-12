@@ -1,6 +1,11 @@
 extends layout
 
 block content
+
+  div.row
+    div.col-sm-2
+      h3.white-words Create User Account
+
   form.form-inline( action="/users/siginup", method="post" )
     div.row
       div.form-group

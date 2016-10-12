@@ -3,17 +3,16 @@ extends layout
 block content
 
   div.row
+    div.col-sm-2
+      h5.h5.white-words Add an Author
 
+  div.row
     form.bookstore-form( action="/authors/add" method="post" )
-      div.row
-        div.col-md-4
-          input( name="name", placeholder="Author's Name", size="30" )
-        div.col-md-4
-          input( name="img_url", placeholder="Image URL", size="30" )
-      br
-      div.row
-        div.col-md-8
-          textarea.form-control( name="bio", placeholder="Information about the Author", rows="3", size="100" )
-      div.row
-        div.col-md-2.col-md-offset-7
+      div.row.form-group
+        input.form-group( name="name", placeholder="Author's Name", size="30" )
+        input.form-group( name="img_url", placeholder="Image URL", size="30" )
+      div.row.form-group
+        textarea.form-control.form-group( name="bio", placeholder="Information about the Author", rows="3", size="100" )
+      div.row.form-group
+        div.col-md-2.form-group
           input.btn.btn-primary( type="submit", value="Submit" )
