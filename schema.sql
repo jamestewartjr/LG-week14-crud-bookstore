@@ -24,8 +24,6 @@ CREATE TABLE authors(
   name VARCHAR(50) NOT NULL
 );
 
-CREATE UNIQUE INDEX author_name ON authors (name);
-
 DROP TABLE IF EXISTS book_users;
 
 CREATE TABLE book_users(
