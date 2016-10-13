@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  div.row
+    div.col-md-6
+      img.img-responsive( src=book.cover )
+    div.col-md-6
+      div.row
+        div.col-md-8
+          h4.h4.input-error Are you sure you wish to delete
+          h2.h2.white-words #{book.title}
+      div.row
+        div.col-md-2
+          a.btn.btn-primary( href="/books/details/" + book.id ) Cancel
+        div.col-xs-1
+        div.col-md-2
+          form( action="/books/delete/" + book.id, method="post" )
+            input( name="book_id" type="hidden", value=book.id )
+            input.btn.btn-danger( type="submit", value="Confirm Delete" )

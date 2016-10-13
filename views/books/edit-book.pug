@@ -4,19 +4,30 @@ block content
 
   div.row
     div.col-sm-2
-      h4.h4.white-words Update Book
+      h4.h4.white-words   Update Book
+  div.row
+    div.col-xs-2
+      img.img-responsive( src=book.cover )
 
   div.row
-    form.bookstore-form( action="/books/edit", method="post" )
+    form.bookstore-form( action="/books/edit/" + book.id, method="post" )
       div.row.form-group
         div.col-md-7
-          input( name="title", placeholder="Title", size="50" )
+          label.white-words Title
+          input( name="title", placeholder=book.title, size="50" )
         div.col-md-7
+          label.white-words Author
           input( name="author", placeholder="Author", size="50"  )
       div.row.form-group
         div.col-md-7
-          input( name="genre", placeholder="Genre", size="50" )
+          label.white-words Genre
+          input( name="genre", placeholder=book.genre, size="50" )
         div.col-md-7
-          input( name="img-url", placeholder="Image URL", size="50" )
+          label.white-words Image URL
+          input( name="cover", placeholder=book.cover, size="50" )
+      div.row.form-group
+          label.white-words Book Description
+      div.row.form-group
+          textarea.form-control.form-group( name="description", placeholder="Book Summary", rows="3", size="100" )
       div.row.form-group
         input.btn.btn-primary( type="submit", value="Submit" )
