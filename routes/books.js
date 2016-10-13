@@ -11,7 +11,11 @@ router.get('/', ( request, response ) => {
   const previousPage = page - 1 > 0 ? page - 1 : 1
 
   Book.getAll( size, page ).then( books => {
-    response.render( './index', { books: books, page: page, size: size, nextPage: nextPage, previousPage: previousPage } )
+    response.render( './index', { books: books,
+                                  page: page,
+                                  size: size,
+                                  nextPage: nextPage,
+                                  previousPage: previousPage } )
     })
 })
 
@@ -31,11 +35,9 @@ router.post('/add', (request, response) => {
 //TODO: Add function to insert Author into authors table.
 
       if( genre ) {
-        console.log(book_id);
         Book.updateGenre( genre, book_id )
       }
       if ( cover ) {
-        console.log(cover);
         Book.updateCover( cover, book_id )
       }
       response.redirect( `details/${book_id}` ) })
@@ -73,11 +75,14 @@ router.post('/edit/:book_id', (request, response) => {
 
 router.get( '/delete/:book_id', ( request, response ) => {
   const { book_id } = request.params
+  Book.getById( book_id )
+    .then( book => { response.render( 'books/delete-book', { book: book } )
+  })
 
 })
 
-router.post('/delete/:book_id', (request, repsonse) => {
-  const { book_id } = request.params
+router.post('/delete/:book_id', (request, response ) => {
+  const { book_id } = request.body
   Book.delete( book_id ).then( response.redirect( '/books/' ) )
 })
 
