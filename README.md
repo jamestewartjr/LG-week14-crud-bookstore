@@ -14,17 +14,17 @@ Creating this web application will provide exposure to:
 
 ## Specifications
 Users can:
-- [ ] Add books into the system via a page
+- [x] Add books into the system via a page
 - [ ] Edit the details of a book
-- [ ] Delete a book from the system
+- [x] Delete a book from the system
 - [ ] See a book's details with title, author, genre, description, and cover image
 - [ ] Add an author
 - [ ] Edit an author books
 - [ ] See books related to an author
-- [ ] Signup for an account
+- [x] Signup for an account
 - [ ] Login & logout of an account
-- [ ] See the listing of available books
-- [ ] Find a licensed project, preferably with the [MIT license][mit-license].
+- [x] See the listing of available books
+- [x] Find a licensed project, preferably with the [MIT license][mit-license].
 
 ## Quality Rubric
 
