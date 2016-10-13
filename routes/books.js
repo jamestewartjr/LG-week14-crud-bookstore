@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { Book } = require( '../database/booksDb' )
+const db = require('../database')
 
 router.get('/', ( request, response ) => {
   const { query } = request
@@ -23,22 +24,22 @@ router.post('/add', (request, response) => {
 
   const { title, author, genre, cover } = request.body
 
-  if( title ) {
+  if( title && author ) {
     Book.add( title )
     .then( data => {
+
       let book_id = data['id']
+      db.addAuthor( author )
+      .then( data => {
 
-//TODO: Add function to insert Author into authors table.
+        let author_id = data['id']
+        db.connectAuthorsWithBook( author_id, book_id )
+      })
 
-      if( genre ) {
-        console.log(book_id);
-        Book.updateGenre( genre, book_id )
-      }
-      if ( cover ) {
-        console.log(cover);
-        Book.updateCover( cover, book_id )
-      }
-      response.redirect( `details/${book_id}` ) })
+      if ( genre ) Book.updateGenre( genre, book_id )
+      if ( cover ) Book.updateCover( cover, book_id )
+      response.redirect( `details/${book_id}` )
+    })
   } else {
       const error = true
       response.render( 'books/add-book', { error: error } )
