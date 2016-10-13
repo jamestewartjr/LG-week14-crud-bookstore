@@ -78,7 +78,6 @@ router.get( '/delete/:book_id', ( request, response ) => {
   Book.getById( book_id )
     .then( book => { response.render( 'books/delete-book', { book: book } )
   })
-
 })
 
 router.post('/delete/:book_id', (request, response ) => {
