@@ -1,9 +1,19 @@
 extends layout
 
 block content
+
+  if books
+    div.row
+      - for ( book of books ) {
+        div.col-xs-2
+          a( href="/books/details/" + book.id )
+            img.img-responsive.img-circular( src=book.cover)
+        - }
   div.row
-    - for ( book in books ) {
-    h4 book.id
-      a( href="/books/details/" + id )
-        img.img-responsive( src="{book.img_url}" )
-    - }
+    if previousPage
+      div.col-xs-2
+        a.btn.btn-primary( href="/books/?page=" + previousPage ) Prev
+
+    if nextPage
+      div.col-xs-2
+        a.btn.btn-primary( href="/books/?page=" + nextPage ) Next

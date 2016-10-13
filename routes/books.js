@@ -2,14 +2,17 @@ const express = require('express')
 const router = express.Router()
 const { Book } = require( '../database/booksDb' )
 
-//TODO: adjust for displaying entire list of books
-router.get('/', (request, response) => {
+router.get('/', ( request, response ) => {
+  const { query } = request
 
-  Book.getAll()
-  .then( books => {
-    console.log(books)
-    console.log(books.id)
-    response.render( 'index', { books } )})
+  const page = parseInt( query.page || 1 )
+  const size = parseInt( query.size || 5 )
+  const nextPage = page + 1
+  const previousPage = page - 1 > 0 ? page - 1 : 1
+
+  Book.getAll( size, page ).then( books => {
+    response.render( './index', { books: books, page: page, size: size, nextPage: nextPage, previousPage: previousPage } )
+    })
 })
 
 router.get('/add', (request, response) => {
@@ -17,33 +20,41 @@ router.get('/add', (request, response) => {
 })
 
 router.post('/add', (request, response) => {
+
   const { title, author, genre, cover } = request.body
 
-  // if( title && author && genre && img_url) {
   if( title ) {
     Book.add( title )
-    .then( book_id => {
+    .then( data => {
+      let book_id = data['id']
 
-    })
-    //TODO: Insert create book function
-    //TODO: Redirect to book-details of newly added book.
-    response.redirect( 'details' )
+//TODO: Add function to insert Author into authors table.
+
+      if( genre ) {
+        console.log(book_id);
+        Book.updateGenre( genre, book_id )
+      }
+      if ( cover ) {
+        console.log(cover);
+        Book.updateCover( cover, book_id )
+      }
+      response.redirect( `details/${book_id}` ) })
   } else {
-    const error = true
-    response.render( 'books/add-book', { error: error } )
-  }
+      const error = true
+      response.render( 'books/add-book', { error: error } )
+    }
 })
 
 router.get( '/delete/:book_id', ( request, response ) => {
   const { book_id } = request.params
-  // Book.delete( book_id )
-  response.redirect( 'books/' )
-
+  Book.delete( book_id ).then( response.redirect( '/books/' ) )
 })
 
 //TODO: adjust for specific book id
-router.get('/details', (request, response) => {
-  response.render( 'books/book-details' )
+router.get('/details/:book_id', (request, response) => {
+  const { book_id } = request.params
+  Book.getById( book_id )
+  .then( book => { response.render( 'books/book-details', { book: book } ) })
 })
 
 //TODO: adjust for specific book id

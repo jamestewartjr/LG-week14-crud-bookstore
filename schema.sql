@@ -14,7 +14,7 @@ CREATE TABLE books(
   title VARCHAR(50) NOT NULL,
   genre vARCHAR(50) NULL,
   cover VARCHAR(255) NULL,
-  description text NULL
+  description text NULL DEFAULT ''
 );
 
 DROP TABLE IF EXISTS authors;
