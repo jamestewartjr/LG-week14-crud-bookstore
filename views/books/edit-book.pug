@@ -1,24 +1,22 @@
-extends layout
+extends ../layout
 
 block content
 
-  div
-    h4.h4 Update Book
+  div.row
+    div.col-sm-2
+      h4.h4.white-words Update Book
 
   div.row
     form.bookstore-form( action="/books/edit", method="post" )
-      div.row
+      div.row.form-group
         div.col-md-7
           input( name="title", placeholder="Title", size="50" )
         div.col-md-7
           input( name="author", placeholder="Author", size="50"  )
-      br
-      div.row
+      div.row.form-group
         div.col-md-7
           input( name="genre", placeholder="Genre", size="50" )
         div.col-md-7
           input( name="img-url", placeholder="Image URL", size="50" )
-      br
-      div.row
-        div.col-xs-2.col-md-offset-8
-          input.btn.btn-primary( type="submit", value="Submit" )
+      div.row.form-group
+        input.btn.btn-primary( type="submit", value="Submit" )

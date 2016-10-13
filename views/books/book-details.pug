@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+  div.row
+    div.col-md-6
+      img.img-responsive( src=book.cover )
+    div.col-md-6
+      div.row
+        div.col-md-8
+          h2.h2.white-words #{book.title}
+      div.row
+        div.col-md-8
+          a( href="/authors/details" )
+            h4.h4.white-words Book Author
+      div.row
+        div.col-md-8
+          h4.h4.white-words #{book.genre}
+      div.row
+        div.col-md-8
+          p.white-words #{book.description}
+      div.row
+        div.col-md-2
+          a.btn.btn-primary( href="/books/edit" ) Update
+        div.col-xs-1
+        div.col-md-2
+          a.btn.btn-danger( href="/books/delete/" + book.id ) Delete

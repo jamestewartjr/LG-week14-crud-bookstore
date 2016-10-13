@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+
+  if error == true
+    div.col-md-6.col-md-offset-5
+      p.input-error A title, at the very least, is required.
+
+
+  div.row
+    div.col-sm-2
+      h5.h5.white-words Add a Book
+
+  div.row
+    form.bookstore-form( action="/books/add", method="post" )
+      div.row.form-group
+        div.col-md-7
+          input( name="title", placeholder="Title", size="50" )
+      div.row.form-group
+        div.col-md-7
+          input( name="author", placeholder="Author", size="50" )
+      div.row.form-group
+        div.col-md-7
+          input( name="genre", placeholder="Genre", size="50" )
+      div.row.form-group
+        div.col-md-7
+          input( name="cover", placeholder="Image URL", size="50" )
+      div.row.form-group
+        div.col-md-2.col-md-offset-6
+          input.btn.btn-primary( type="submit", value="Submit" )

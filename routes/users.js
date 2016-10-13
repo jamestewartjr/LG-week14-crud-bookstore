@@ -4,6 +4,7 @@ const db = require('../database')
 
 router.get('/signup', (request, response) => {
   response.render( 'create-user')
+
 })
 
 router.post('/signup', (request, response) => {
