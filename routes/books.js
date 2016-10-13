@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { Book } = require( '../database/booksDb' )
+const { Book } = require( '../database' )
+const db = require('../database')
+
 
 router.get('/', ( request, response ) => {
   const { query } = request
