@@ -21,7 +21,7 @@ block content
           p.white-words #{book.description}
       div.row
         div.col-md-2
-          a.btn.btn-primary( href="/books/edit" ) Update
+          a.btn.btn-primary( href="/books/edit/" + book.id ) Update
         div.col-xs-1
         div.col-md-2
           a.btn.btn-danger( href="/books/delete/" + book.id ) Delete

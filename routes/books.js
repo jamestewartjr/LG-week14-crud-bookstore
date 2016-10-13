@@ -45,30 +45,40 @@ router.post('/add', (request, response) => {
     }
 })
 
-router.get( '/delete/:book_id', ( request, response ) => {
-  const { book_id } = request.params
-  Book.delete( book_id ).then( response.redirect( '/books/' ) )
-})
-
-//TODO: adjust for specific book id
 router.get('/details/:book_id', (request, response) => {
   const { book_id } = request.params
   Book.getById( book_id )
-  .then( book => { response.render( 'books/book-details', { book: book } ) })
+    .then( book => { response.render( 'books/book-details', { book: book } )
+  })
 })
 
-//TODO: adjust for specific book id
-router.get('/edit', (request, response) => {
-  response.render( 'books/edit-book' )
+router.get('/edit/:book_id', (request, response) => {
+  const { book_id } = request.params
+  Book.getById( book_id )
+    .then( book => { response.render( 'books/edit-book', { book: book } )
+  })
 })
 
-//TODO: adjust to send UPDATED book values to database
-router.post('/edit/BOOKID', (request, response) => {
-  response.send('post info to server redirect to new book')
+router.post('/edit/:book_id', (request, response) => {
+  const { book_id } = request.params
+  const { title, author, genre, cover, description } = request.body
+
+  if( title ){ Book.updateTitle( title, book_id ) }
+//TODO: Add updateAuthor function
+  if( genre ) { Book.updateGenre( genre, book_id ) }
+  if( cover ) { Book.updateCover( cover, book_id ) }
+  if( description ) { Book.updateDescription( description, book_id ) }
+  response.redirect(`/books/details/${book_id}`)
 })
 
-router.post('/delete/BOOKID', (request, repsonse) => {
-  response.send('delete from db return to front page')
+router.get( '/delete/:book_id', ( request, response ) => {
+  const { book_id } = request.params
+
+})
+
+router.post('/delete/:book_id', (request, repsonse) => {
+  const { book_id } = request.params
+  Book.delete( book_id ).then( response.redirect( '/books/' ) )
 })
 
 module.exports = router
