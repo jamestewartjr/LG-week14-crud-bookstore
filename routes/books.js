@@ -27,26 +27,51 @@ router.get('/add', (request, response) => {
 
 router.post('/add', (request, response) => {
 
-  const { title, author, genre, cover } = request.body
+  const { title, author, genre, cover, description } = request.body
 
-  if( title ) {
-    Book.add( title )
-    .then( data => {
-      let book_id = data['id']
+  Promise.all([
+    Book.add( title, genre, cover, description),
+    db.addAuthor( author )
+  ])
+  .then( results => {
+    const bookId = results[0]
+    const authorId = results[1]
 
-//TODO: Add function to insert Author into authors table.
+    console.log("results in book promise", results)
+    console.log("bookId after promise", bookId)
+    console.log("authorId after promise", authorId)
 
-      if( genre ) {
-        Book.updateGenre( genre, book_id )
-      }
-      if ( cover ) {
-        Book.updateCover( cover, book_id )
-      }
-      response.redirect( `details/${book_id}` ) })
-  } else {
-      const error = true
-      response.render( 'books/add-book', { error: error } )
-    }
+    db.connectAuthorsWithBook(authorId, bookId)
+    .then( (blendIt) => {
+      console.log('end of add', blendIt)
+      response.redirect(`/${bookId}`)
+    })
+  })
+  .catch(function(error){
+      throw error
+  })
+
+  // if( title ) {
+  //   Book.add( title )
+  //   .then( data => {
+  //     let book_id = data['id']
+  //     if( author ) {
+  //       db.addAuthor( author, book_id )
+  //     }
+  //     if( genre ) {
+  //       Book.updateGenre( genre, book_id )
+  //     }
+  //     if ( cover ) {
+  //       Book.updateCover( cover, book_id )
+  //     }
+  //     if ( description ) {
+  //       Book.updateDescription( description, book_id )
+  //     }
+  //     response.redirect( `details/${book_id}` ) })
+  // } else {
+  //     const error = true
+  //     response.render( 'books/add-book', { error: error } )
+  //   }
 })
 
 router.get('/details/:book_id', (request, response) => {

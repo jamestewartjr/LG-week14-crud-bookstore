@@ -5,7 +5,7 @@ const db = require('../database')
 router.get('/', (request, response) => {
   db.getAllAuthors()
     .then( authors => {
-      response.render('./authors/index', {authors: authors})
+      response.render('authors/index', {authors: authors})
     })
     .catch( error => {throw error})
 })
