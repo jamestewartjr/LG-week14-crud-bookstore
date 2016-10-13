@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
 
@@ -8,7 +8,7 @@ block content
     div.col-md-5
       div.row
         div.col-md-7
-          h2.h2.white-words O.D.B.
+          h2.h2.white-words= author.name
       div.row
         div.col-md-12
           strong.white-words Bio and stuff bout the author.
@@ -23,6 +23,6 @@ block content
     div.author-books
       - for ( let i = 4; i > 0; i-- ) {
         div.col-md-3
-          a( href="/books/details" )
+          a( href="/authors/details" )
             img.img-responsive( src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9JKurHW69MeQsEB3ErEZkLHzWbnub-Ulwru-VzcXZGpaytPrQlw" )
       - }
