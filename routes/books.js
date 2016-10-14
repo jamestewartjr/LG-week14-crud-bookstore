@@ -68,9 +68,19 @@ router.get('/details/:book_id', (request, response) => {
 })
 router.get('/edit/:book_id', (request, response) => {
   const { book_id } = request.params
-  Book.getById( book_id )
-    .then( book => {
-      response.render( 'books/edit-book', { book: book } )
+
+  Promise.all([
+    Book.getById( book_id ),
+    db.getAuthorsByBookIds( book_id)
+  ])
+    .then( data  => {
+      const book = data[0]
+      const author = data[1][0]
+
+      response.render( 'books/edit-book', {
+        book: book,
+        author: author
+      })
     })
     .catch( (error) => {
       response.render('error', { error: error } )
@@ -79,13 +89,15 @@ router.get('/edit/:book_id', (request, response) => {
 
 router.post('/edit/:book_id', (request, response) => {
   const { book_id } = request.params
+  console.log("book_id", book_id)
   const { title, author, genre, cover, description } = request.body
+  console.log("body", request.body)
 
-  if( title ){ Book.updateTitle( title, book_id ) }
-//TODO: Add updateAuthor function
-  if( genre ) { Book.updateGenre( genre, book_id ) }
-  if( cover ) { Book.updateCover( cover, book_id ) }
-  if( description ) { Book.updateDescription( description, book_id ) }
+  Promise.all([
+    db.updateAuthor(author, book_id),
+    db.updateBook(book_id, request.body)
+  ])
+
   response.redirect(`/books/details/${book_id}`)
 })
 
