@@ -21,8 +21,6 @@ router.get('/details/:author_id', (request, response) => {
     .then(info => {
       const author = info[0]
       const books = info[1]
-      console.log( "author", author)
-      console.log( "book", books)
       response.render('authors/author-details', {
         books: books,
         author: author
