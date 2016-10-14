@@ -37,12 +37,12 @@ router.post('/add', (request, response) => {
     const authorId = results[1]
 
     db.connectAuthorsWithBook(authorId.id, bookId.id)
-    .then( (blendIt) => {
-      response.redirect(`/books/details/${blendIt.book_id}`)
+    .then( (results) => {
+      response.redirect(`/books/details/${results.book_id}`)
     })
   })
-  .catch(function(error){
-      throw error
+  .catch( (error) => {
+      response.render('error', { error: error } )
   })
 
 })
@@ -50,15 +50,23 @@ router.post('/add', (request, response) => {
 router.get('/details/:book_id', (request, response) => {
   const { book_id } = request.params
   Book.getById( book_id )
-    .then( book => { response.render( 'books/book-details', { book: book } )
-  })
+    .then( book => {
+      response.render( 'books/book-details', { book: book } )
+    })
+    .catch( (error) => {
+      response.render('error', { error: error } )
+    })
 })
 
 router.get('/edit/:book_id', (request, response) => {
   const { book_id } = request.params
   Book.getById( book_id )
-    .then( book => { response.render( 'books/edit-book', { book: book } )
-  })
+    .then( book => {
+      response.render( 'books/edit-book', { book: book } )
+    })
+    .catch( (error) => {
+      response.render('error', { error: error } )
+    })
 })
 
 router.post('/edit/:book_id', (request, response) => {

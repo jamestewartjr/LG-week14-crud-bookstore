@@ -35,14 +35,10 @@ const authenticateUser = (email, password) => {
   return database.one(sql, variables)
 }
 
-
-
 const addAuthor = (authorName) => {
   const sql = `INSERT INTO authors(name) VALUES ($1) RETURNING id`
   return database.one(sql, authorName)
 }
-
-
 
 const updateAuthor = (authorName, bookId) => {
   const sql = `UPDATE authors SET name = $1 WHERE id = $2 RETURNING id`
@@ -50,8 +46,6 @@ const updateAuthor = (authorName, bookId) => {
   return database.one(sql, variables )
 
 }
-
-
 
 const connectAuthorsWithBook = (authorId, bookId) => {
   const sql = `INSERT INTO book_authors(author_id, book_id) VALUES ($1, $2) RETURNING book_id`
@@ -71,7 +65,7 @@ const getAuthorById = (authorId) => {
 }
 
 const getBooksByAuthorId = (authorId) => {
-  const sql = `SELECT books.* FROM books JOIN book_authors ON books.id = author_books.book_id WHERE book_authors.author_id =$1`
+  const sql = `SELECT books.* FROM books JOIN book_authors ON books.id = book_authors.book_id WHERE book_authors.author_id IN ($1)`
   const variables = [authorId]
   return database.any(sql, variables)
 }
@@ -104,7 +98,6 @@ module.exports = {
   getAllAuthors,
   getAuthorById,
   Book,
-  connectAuthorsWithBook
-
-
+  connectAuthorsWithBook,
+  getBooksByAuthorId
 }

@@ -7,15 +7,32 @@ router.get('/', (request, response) => {
     .then( authors => {
       response.render('authors/index', {authors: authors})
     })
-    .catch( error => {throw error})
+    .catch( (error) => {
+        response.render('error', { error: error } )
+    })
 })
 
 router.get('/details/:author_id', (request, response) => {
   const { author_id } = request.params
-  db.getAuthorById(author_id)
-    .then(author => {
-      response.render('authors/author-details', {author: author})
+  console.log( "authorId", author_id)
+  Promise.all([
+    db.getAuthorById(author_id),
+    db.getBooksByAuthorId(author_id)
+  ])
+    .then(info => {
+      const author = info[0]
+      const book = info[1]
+      console.log( "author", author)
+      console.log( "book", book)
+      response.render('authors/author-details', {
+        book: book,
+        author: author
+
+      })
     })
+    .catch( (error) => {
+        response.render('error', { error: error } )
+     })
 })
 
 
