@@ -13,7 +13,7 @@ router.get('/', ( request, response ) => {
   const previousPage = page - 1 > 0 ? page - 1 : 1
 
   Book.getAll( size, page ).then( books => {
-    response.render( './index', { books: books,
+    response.render( 'books/index', { books: books,
                                   page: page,
                                   size: size,
                                   nextPage: nextPage,
@@ -48,25 +48,15 @@ router.post('/add', (request, response) => {
 })
 
 router.get('/details/:book_id', (request, response) => {
-  const book_id  = request.params.book_id
-  console.log("book_id", book_id)
-  Promise.all([
-    Book.getById(book_id),
-    db.getAuthorsByBookIds([book_id])
-  ])
-  .then( (data) => {
-    const book = data[0]
-    const author = data[1]
-    console.log("book", book)
-    console.log("author", author[0].name)
-    response.render( 'books/book-details', {
-      book: book,
-      author: author
+  const { book_id } = request.params
+  Book.getById( book_id )
+    .then( book => {
+
+      response.render( 'books/book-details', { book: book } )
     })
-  })
-  .catch( (error) => {
-    response.render('error', { error: error } )
-  })
+    .catch( (error) => {
+      response.render('error', { error: error } )
+    })
 })
 
 router.get('/edit/:book_id', (request, response) => {
