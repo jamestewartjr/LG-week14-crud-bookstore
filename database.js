@@ -40,13 +40,6 @@ const addAuthor = (authorName) => {
   return database.one(sql, authorName)
 }
 
-const updateAuthor = (authorName, bookId) => {
-  const sql = `UPDATE authors SET name = $1 WHERE id = $2 RETURNING id`
-  const variables = [authorName, bookId]
-  return database.one(sql, variables )
-
-}
-
 const connectAuthorsWithBook = (authorId, bookId) => {
   const sql = `INSERT INTO book_authors(author_id, book_id) VALUES ($1, $2) RETURNING book_id`
   let variables = [authorId, bookId]
@@ -76,14 +69,46 @@ const getAuthorsByBookIds = (bookId) => {
   return database.any(sql, variables)
 }
 
-
-
-const getBookAuthorsByBookId = (bookId) => {
+const updateAuthor = (authorName, bookId) => {
+  const sql = `UPDATE authors SET name = $1 WHERE id = $2 RETURNING id`
+  const variables = [authorName, bookId]
+  return database.one(sql, variables )
 
 }
 
+const updateBook = (bookId, attributes) => {
+  const sql = `UPDATE books SET title = $2, genre = $3, cover = $4, description = $5 WHERE id = $1`
 
+  const variables = [bookId, attributes.title, attributes.genre, attributes.cover, attributes.description]
+  const updateBookQuery = database.one(sql, variables)
+  const queries = [
+    updateBookQuery,
+    replaceBookAuthorConnection
+  ]
 
+  return Promise.all(queries)
+}
+
+const replaceBookAuthorConnection = (authorId, bookId) => {
+  db.none('DELETE FROM book_authors WHERE book_id=$1', [bookId])
+  .then(() => {
+    return associateBookWithAuthors(authorId, bookId)
+  })
+}
+
+const associateBookWithAuthors = (authorId, bookId) => {
+  if (authorId !== '' && authorId !== undefined) {
+    const sql = `
+      INSERT INTO
+        book_authors(author_id, book_id)
+      VALUES
+        ($1, $2)
+    `
+      const variables = [authorId.id, bookId.id]
+      return db.any(sql, variables)
+  }
+    // return Promise.all(queries)
+}
 
 module.exports = {
   addUser,
@@ -94,6 +119,7 @@ module.exports = {
   Book,
   getAuthorsByBookIds,
   connectAuthorsWithBook,
-  getBooksByAuthorId
-
+  getBooksByAuthorId,
+  updateBook,
+  updateAuthor
 }
