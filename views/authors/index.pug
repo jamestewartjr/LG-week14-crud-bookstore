@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+
+  if authors
+    div.row
+      - for ( author of authors ) {
+        div.col-xs-2
+          a( href="/authors/details/" + author.id )
+            author.name
+        - }
