@@ -72,20 +72,14 @@ const getBooksByAuthorId = (authorId) => {
 
 const getAuthorsByBookIds = (bookId) => {
   const sql = `SELECT authors.*, book_authors.book_id FROM authors JOIN book_authors ON authors.id = book_authors.author_id WHERE book_authors.book_id IN ($1)`
-  return database.many(sql, [bookId])
+  const variables = bookId
+  return database.any(sql, variables)
 }
 
 
 
 const getBookAuthorsByBookId = (bookId) => {
-  return Promise.all([
-    Book.getById(bookId),
-    getAuthorsByBookIds([bookId])
-  ]).then( (data) => {
-    const book = data[0]
-    book.authors = data[1]
-    return book
-  })
+
 }
 
 
@@ -98,6 +92,8 @@ module.exports = {
   getAllAuthors,
   getAuthorById,
   Book,
+  getAuthorsByBookIds,
   connectAuthorsWithBook,
   getBooksByAuthorId
+
 }

@@ -17,10 +17,10 @@ Users can:
 - [x] Add books into the system via a page
 - [ ] Edit the details of a book
 - [x] Delete a book from the system
-- [ ] See a book's details with title, author, genre, description, and cover image
+- [x] See a book's details with title, author, genre, description, and cover image
 - [x] Add an author
 - [ ] Edit an author books
-- [ ] See books related to an author
+- [] See books related to an author
 - [x] Signup for an account
 - [ ] Login & logout of an account
 - [x] See the listing of available books
