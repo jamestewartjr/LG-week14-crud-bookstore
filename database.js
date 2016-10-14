@@ -73,7 +73,7 @@ const getBooksByAuthorId = (authorId) => {
 const getAuthorsByBookIds = (bookId) => {
   const sql = `SELECT authors.*, book_authors.book_id FROM authors JOIN book_authors ON authors.id = book_authors.author_id WHERE book_authors.book_id IN ($1)`
   const variables = bookId
-  return database.many(sql, variables)
+  return database.any(sql, variables)
 }
 
 
