@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
 
@@ -6,7 +6,7 @@ block content
     div.row
       - for ( book of books ) {
         div.col-xs-2
-          a( href="/details/" + book.id )
+          a( href="/books/details/" + book.id )
             img.img-responsive.img-circular( src=book.cover)
         - }
     div.row
