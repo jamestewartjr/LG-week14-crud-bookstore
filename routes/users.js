@@ -9,7 +9,6 @@ router.get('/signup', (request, response) => {
 
 router.post('/signup', (request, response) => {
   let user = request.body
-  console.log("user", user);
   db.addUser(user)
     .then( (user) => {
       response.redirect('/books')

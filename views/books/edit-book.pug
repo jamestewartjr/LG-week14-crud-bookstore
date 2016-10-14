@@ -17,7 +17,7 @@ block content
           input( name="title", placeholder=book.title, size="50" )
         div.col-md-7
           label.white-words Author
-          input( name="author", placeholder="Author", size="50"  )
+          input( name="author", placeholder=book.author size="50"  )
       div.row.form-group
         div.col-md-7
           label.white-words Genre
@@ -28,6 +28,6 @@ block content
       div.row.form-group
           label.white-words Book Description
       div.row.form-group
-          textarea.form-control.form-group( name="description", placeholder="Book Summary", rows="3", size="100" )
+          textarea.form-control.form-group( name="description", placeholder=book.description, rows="3", size="100" )
       div.row.form-group
         input.btn.btn-primary( type="submit", value="Submit" )

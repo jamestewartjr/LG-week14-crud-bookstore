@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { Book } = require( '../database/booksDb' )
+const { Book } = require( '../database' )
+const db = require('../database')
+
 
 router.get('/', ( request, response ) => {
   const { query } = request
@@ -24,41 +26,47 @@ router.get('/add', (request, response) => {
 })
 
 router.post('/add', (request, response) => {
+  const { title, author, genre, cover, description } = request.body
 
-  const { title, author, genre, cover } = request.body
+  Promise.all([
+    Book.add( request.body),
+    db.addAuthor( author )
+  ])
+  .then( results => {
+    const bookId = results[0]
+    const authorId = results[1]
 
-  if( title ) {
-    Book.add( title )
-    .then( data => {
-      let book_id = data['id']
+    db.connectAuthorsWithBook(authorId.id, bookId.id)
+    .then( (results) => {
+      response.redirect(`/books/details/${results.book_id}`)
+    })
+  })
+  .catch( (error) => {
+      response.render('error', { error: error } )
+  })
 
-//TODO: Add function to insert Author into authors table.
-
-      if( genre ) {
-        Book.updateGenre( genre, book_id )
-      }
-      if ( cover ) {
-        Book.updateCover( cover, book_id )
-      }
-      response.redirect( `details/${book_id}` ) })
-  } else {
-      const error = true
-      response.render( 'books/add-book', { error: error } )
-    }
 })
 
 router.get('/details/:book_id', (request, response) => {
   const { book_id } = request.params
   Book.getById( book_id )
-    .then( book => { response.render( 'books/book-details', { book: book } )
-  })
+    .then( book => {
+      response.render( 'books/book-details', { book: book } )
+    })
+    .catch( (error) => {
+      response.render('error', { error: error } )
+    })
 })
 
 router.get('/edit/:book_id', (request, response) => {
   const { book_id } = request.params
   Book.getById( book_id )
-    .then( book => { response.render( 'books/edit-book', { book: book } )
-  })
+    .then( book => {
+      response.render( 'books/edit-book', { book: book } )
+    })
+    .catch( (error) => {
+      response.render('error', { error: error } )
+    })
 })
 
 router.post('/edit/:book_id', (request, response) => {
