@@ -24,20 +24,12 @@ html
             a( href='/users/signup' )
                 h4.h4 Create Account
             form( action="/users/login", method="post" )
-              input.user-login-input( name="email", placeholder="Username" )
-              input.user-login-input( name="password", placeholder="Password", type="password" )
-              input.btn.btn-default( type="submit", value="Login" )
+              input.user-login-input.form-group( name="email", placeholder="Username" )
+              input.user-login-input.form-group( name="password", placeholder="Password", type="password" )
+              input.btn.btn-default.form-group( type="submit", value="Login" )
   div.row
-    div.admin-buttons
+    div.col-md-1
       a.btn.btn-default.admin-btn( href="/books/add" ) Add Book
 
-    //- div.row.search-row
-    //-   form.search( action="#", method="#" )
-    //-     input.form-control( name="search-query", placeholder="Search Books Here", type="text", size="75" )
-    //-     input.form-group.col-md-offset-10( type="submit" value="Submit")
-
   div.page-container
-
-
-
     block content
