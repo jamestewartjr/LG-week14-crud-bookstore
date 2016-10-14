@@ -16,6 +16,10 @@ body {
   justify-content: space-between;
 }
 
+.jumbotron {
+  background-image: url();
+}
+
 .header-container {
   display: flex;
   background-color: rgba( 19, 38, 57, 0.82 );
