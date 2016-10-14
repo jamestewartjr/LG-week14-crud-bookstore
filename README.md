@@ -18,7 +18,7 @@ Users can:
 - [ ] Edit the details of a book
 - [x] Delete a book from the system
 - [ ] See a book's details with title, author, genre, description, and cover image
-- [ ] Add an author
+- [x] Add an author
 - [ ] Edit an author books
 - [ ] See books related to an author
 - [x] Signup for an account

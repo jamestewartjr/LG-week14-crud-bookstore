@@ -11,8 +11,8 @@ block content
           h2.h2.white-words #{book.title}
       div.row
         div.col-md-8
-          a( href="/authors/details" )
-            h4.h4.white-words Book Author
+          h4.h4.white-words #{author.name}
+            a( href="/authors/details/"+ author.id  )
       div.row
         div.col-md-8
           h4.h4.white-words #{book.genre}

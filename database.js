@@ -54,9 +54,9 @@ const updateAuthor = (authorName, bookId) => {
 
 
 const connectAuthorsWithBook = (authorId, bookId) => {
-  const sql = `INSERT INTO book_authors(author_id, book_id) VALUES ($1, $2)`
+  const sql = `INSERT INTO book_authors(author_id, book_id) VALUES ($1, $2) RETURNING book_id`
   let variables = [authorId, bookId]
-  return database.none(sql, variables)
+  return database.one(sql, variables)
 }
 
 const getAllAuthors = () => {
