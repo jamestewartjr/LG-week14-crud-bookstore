@@ -49,7 +49,7 @@ router.post('/add', (request, response) => {
 
 router.get('/details/:book_id', (request, response) => {
   const book_id  = request.params.book_id
-  console.log("book_id", book_id);
+  console.log("book_id", book_id)
   Promise.all([
     Book.getById(book_id),
     db.getAuthorsByBookIds([book_id])
