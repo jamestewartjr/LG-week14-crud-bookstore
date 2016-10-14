@@ -9,11 +9,18 @@ block content
           a( href="/books/details/" + book.id )
             img.img-responsive.img-circular( src=book.cover)
         - }
-  div.row
-    if previousPage
-      div.col-xs-2
-        a.btn.btn-primary( href="/books/?page=" + previousPage ) Prev
+    div.row
+      if previousPage
+        div.col-xs-2
+          a.btn.btn-primary( href="/books/?page=" + previousPage ) Prev
 
-    if nextPage
+      if nextPage
+        div.col-xs-2
+          a.btn.btn-primary( href="/books/?page=" + nextPage ) Next
+  else
+    div.row
+      div.col-md-8.col-md-offset-3
+        h2.h2.white-words Book Store Opening Page
+    div.row
       div.col-xs-2
-        a.btn.btn-primary( href="/books/?page=" + nextPage ) Next
+        a.btn.btn-primary( href="/books/" ) Book Listings

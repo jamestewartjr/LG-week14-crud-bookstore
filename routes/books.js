@@ -39,7 +39,7 @@ router.post('/add', (request, response) => {
         let author_id = data['id']
         db.connectAuthorsWithBook( author_id, book_id )
       })
-      
+
       if ( genre ) Book.updateGenre( genre, book_id )
       if ( cover ) Book.updateCover( cover, book_id )
       response.redirect( `details/${book_id}` )
@@ -67,9 +67,11 @@ router.get('/edit', (request, response) => {
   response.render( 'books/edit-book' )
 })
 
-//TODO: adjust to send UPDATED book values to database
-router.post('/edit/BOOKID', (request, response) => {
-  response.send('post info to server redirect to new book')
+router.get( '/delete/:book_id', ( request, response ) => {
+  const { book_id } = request.params
+  Book.getById( book_id )
+    .then( book => { response.render( 'books/delete-book', { book: book } )
+  })
 })
 
 router.post('/delete/BOOKID', (request, repsonse) => {

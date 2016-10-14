@@ -40,12 +40,12 @@ const getAuthorsByBookIds = (bookId) => {
   const sql = `SELECT authors.*, book_authors.book_id FROM authors JOIN book_authors ON authors.id = book_authors.author_id WHERE book_authors.book_id IN ($1)`
   return database.many(sql, [bookId])
 }
+<<<<<<< HEAD
 const connectAuthorsWithBook = (authorId, bookId) => {
   const sql = `INSERT INTO book_authors(author_id, book_id) VALUES ($1, $2)`
   let variables = [authorId, bookId]
   return database.none(sql, variables)
 }
-
 const getBookWithGenresAndAuthorsByBookId = (bookId) => {
   return Promise.all([
     Book.getById(bookId),
@@ -64,5 +64,6 @@ module.exports = {
   getAllAuthors,
   getAuthorById,
   connectAuthorsWithBook
+
 
 }

@@ -11,9 +11,9 @@ DROP TABLE IF EXISTS books;
 
 CREATE TABLE books(
   id SERIAL PRIMARY KEY,
-  title VARCHAR(50) NOT NULL,
-  genre vARCHAR(50) NULL,
-  cover VARCHAR(255) NULL,
+  title VARCHAR(150) NOT NULL,
+  genre VARCHAR(150) NULL,
+  cover VARCHAR(512) NULL,
   description text NULL DEFAULT ''
 );
 
