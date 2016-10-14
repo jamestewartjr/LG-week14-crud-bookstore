@@ -14,18 +14,17 @@ router.get('/', (request, response) => {
 
 router.get('/details/:author_id', (request, response) => {
   const { author_id } = request.params
-  console.log( "authorId", author_id)
   Promise.all([
     db.getAuthorById(author_id),
     db.getBooksByAuthorId(author_id)
   ])
     .then(info => {
       const author = info[0]
-      const book = info[1]
+      const books = info[1]
       console.log( "author", author)
-      console.log( "book", book)
+      console.log( "book", books)
       response.render('authors/author-details', {
-        book: book,
+        books: books,
         author: author
 
       })
