@@ -2,6 +2,11 @@ extends ../layout
 
 block content
 
+  -let authorName = ''
+
+  if ( author )
+    authorName = author.name
+
   div.row
     div.col-sm-2
       h4.h4.white-words   Update Book
@@ -17,7 +22,7 @@ block content
           input( name="title", value=book.title, size="50" )
         div.col-md-7
           label.white-words Author
-          input( name="author", value=author.name, size="50"  )
+          input( name="author", value= authorName , size="50"  )
       div.row.form-group
         div.col-md-7
           label.white-words Genre
