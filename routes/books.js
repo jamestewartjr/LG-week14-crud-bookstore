@@ -12,8 +12,12 @@ router.get('/', ( request, response ) => {
   const previousPage = page - 1 > 0 ? page - 1 : 1
 
   Book.getAll( size, page ).then( books => {
-    response.render( './index', { books: books, page: page, size: size, nextPage: nextPage, previousPage: previousPage } )
-    })
+    response.render( './index', { books: books,
+                                  page: page,
+                                  size: size,
+                                  nextPage: nextPage,
+                                  previousPage: previousPage })
+  })
 })
 
 router.get('/add', (request, response) => {
@@ -35,7 +39,7 @@ router.post('/add', (request, response) => {
         let author_id = data['id']
         db.connectAuthorsWithBook( author_id, book_id )
       })
-
+      
       if ( genre ) Book.updateGenre( genre, book_id )
       if ( cover ) Book.updateCover( cover, book_id )
       response.redirect( `details/${book_id}` )
