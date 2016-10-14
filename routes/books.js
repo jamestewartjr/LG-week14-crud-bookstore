@@ -48,14 +48,24 @@ router.post('/add', (request, response) => {
 })
 
 router.get('/details/:book_id', (request, response) => {
-  const { book_id } = request.params
-  Book.getById( book_id )
-    .then( book => {
-      response.render( 'books/book-details', { book: book } )
-    })
-    .catch( (error) => {
-      response.render('error', { error: error } )
-    })
+  const { bookId } = request.params
+  Promise.all([
+    Book.getById(bookId),
+    db.getAuthorsByBookIds([bookId])
+  ])
+  .then( (data) => {
+    const book = data[0]
+    const author = data[1]
+    console.log("book", book)
+    console.log("author", author)
+    response.render( 'books/book-details', {
+      book: book,
+      author: author
+    } )
+  })
+  .catch( (error) => {
+    response.render('error', { error: error } )
+  })
 })
 
 router.get('/edit/:book_id', (request, response) => {

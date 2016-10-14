@@ -98,6 +98,8 @@ module.exports = {
   getAllAuthors,
   getAuthorById,
   Book,
+  getAuthorsByBookIds,
   connectAuthorsWithBook,
   getBooksByAuthorId
+
 }
